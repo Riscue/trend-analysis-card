@@ -76,14 +76,12 @@ export class TrendAnalysisCard extends LitElement {
         }
         if (data.length != 0) {
             const netChange = data[data.length - 1].v - data[0].v;
-            const pct = (netChange / data[0].v) * 100;
             this._result = {
                 start: data[0].v.toFixed(2),
                 end: data[data.length - 1].v.toFixed(2),
                 increase: increase.toFixed(2),
                 decrease: decrease.toFixed(2),
                 delta: netChange.toFixed(2),
-                pct: pct.toFixed(2),
                 trend: netChange > 0 ? "up" : netChange < 0 ? "down" : "neutral",
             };
         } else {
@@ -271,7 +269,7 @@ export class TrendAnalysisCard extends LitElement {
                                                         </div>
                                                         <div class=${r.trend === "up" ? "trend-up" : r.trend === "down" ? "trend-down" : "trend-neutral"}>
                                                             ${r.trend === "up" ? "📈" : r.trend === "down" ? "📉" : "➖"}
-                                                            ${localize('common.delta')}: ${r.delta} ${unit} (${r.pct}%)
+                                                            ${localize('common.delta')}: ${r.delta} ${unit}
                                                         </div>`}
                                 </div>`}
                 </div>
