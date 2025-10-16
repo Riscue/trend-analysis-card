@@ -36,6 +36,17 @@ showDatePickers: false
 
 ---
 
+| Name                | Type      | Required | Default              | Description                                                                                                          |
+|---------------------|-----------|----------|----------------------|----------------------------------------------------------------------------------------------------------------------|
+| **entity**          | `string`  | ❌ No     | -                    | The entity ID of the sensor to analyze (e.g. `sensor.energy_usage`). If empty an entity must be selected from search |
+| **header**          | `string`  | ❌ No     | entity.friendly_name | Card title displayed in the header.                                                                                  |
+| **preset**          | `number`  | ❌ No     | `24`                 | Default preset range in hours (e.g. `24`, `168` for 7 days).                                                         |
+| **showSettings**    | `boolean` | ❌ No     | `true`               | Whether to show a settings button.                                                                                   |
+| **showPresets**     | `boolean` | ❌ No     | `true`               | Whether to display quick range selection buttons (24h, 7d, 30d).                                                     |
+| **showDatePickers** | `boolean` | ❌ No     | `true`               | Whether to display the date range picker for manual selection.                                                       |
+
+---
+
 ## License
 
 MIT © [Riscue][riscue]
