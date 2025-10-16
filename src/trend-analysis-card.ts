@@ -155,7 +155,14 @@ export class TrendAnalysisCard extends LitElement {
         const r = this._result;
         const entityState = this._hass.states[this._config.entity];
         const unit = entityState?.attributes?.unit_of_measurement || '';
-        const header = this._config?.header || localize('common.name_entity', {entity_name: entityState?.attributes?.friendly_name}) || localize('common.name');
+        const configHeader = this._config?.header;
+        const entityFriendlyName = entityState?.attributes?.friendly_name;
+        let header = localize('common.name');
+        if (configHeader) {
+            header = configHeader;
+        } else if (entityFriendlyName) {
+            header = localize('common.name_entity', {entity_name: entityFriendlyName});
+        }
 
         return html`
             <ha-card>
@@ -163,7 +170,7 @@ export class TrendAnalysisCard extends LitElement {
                     <h1 class="cursor-pointer" @click="${() => this._showMoreInfo()}">
                         ${header}
                     </h1>
-                    ${this._config.showSettings !== false ? html`
+                    ${this._config.showSettings !== false || !entityState ? html`
                         <ha-icon icon="mdi:cog" class="cursor-pointer" style="padding: 4px;"
                                  @click="${() => this._toggleEntityPicker()}"></ha-icon>
                     ` : ''}
