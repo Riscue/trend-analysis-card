@@ -1,0 +1,6 @@
+{
+  "common": {
+    "name": "Trend Analysis",
+    "name_entity": "{{entity_name}} Trend"
+  }
+}
