@@ -1,5 +1,6 @@
 # Trend Analysis Card for Home Assistant
 
+![SS1](assets/ss1.png)
 
 ## 🚀 Installation
 
