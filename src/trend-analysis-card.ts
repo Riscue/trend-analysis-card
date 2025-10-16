@@ -87,7 +87,7 @@ export class TrendAnalysisCard extends LitElement {
                 trend: netChange > 0 ? "up" : netChange < 0 ? "down" : "neutral",
             };
         } else {
-            this._result = "Veri yok!";
+            this._result = localize('common.no_data');
         }
 
         this._loading = false;
@@ -173,7 +173,7 @@ export class TrendAnalysisCard extends LitElement {
                         <div class="entity-picker-dropdown">
                             <input
                                     type="text"
-                                    placeholder="Sensör ara..."
+                                    placeholder="${localize('common.search_placeholder')}"
                                     class="entity-search"
                                     @input=${(e: Event) => {
                                         const input = e.target as HTMLInputElement;
@@ -207,26 +207,31 @@ export class TrendAnalysisCard extends LitElement {
                         ${this._config.showPresets !== false ? html`
                             <div style="display: flex; flex-wrap: wrap; justify-content: space-between">
                                 <button @click=${() => this._setPreset(1)}
-                                        class="preset-btn ${this._activePreset === 1 ? 'active' : ''}">1 Saat
+                                        class="preset-btn ${this._activePreset === 1 ? 'active' : ''}">
+                                    ${localize('common.preset_1_hour')}
                                 </button>
                                 <button @click=${() => this._setPreset(12)}
-                                        class="preset-btn ${this._activePreset === 12 ? 'active' : ''}">12 Saat
+                                        class="preset-btn ${this._activePreset === 12 ? 'active' : ''}">
+                                    ${localize('common.preset_12_hour')}
                                 </button>
                                 <button @click=${() => this._setPreset(24)}
-                                        class="preset-btn ${this._activePreset === 24 ? 'active' : ''}">24 Saat
+                                        class="preset-btn ${this._activePreset === 24 ? 'active' : ''}">
+                                    ${localize('common.preset_24_hour')}
                                 </button>
                                 <button @click=${() => this._setPreset(168)}
-                                        class="preset-btn ${this._activePreset === 168 ? 'active' : ''}">7 Gün
+                                        class="preset-btn ${this._activePreset === 168 ? 'active' : ''}">
+                                    ${localize('common.preset_7_day')}
                                 </button>
                                 <button @click=${() => this._setPreset(720)}
-                                        class="preset-btn ${this._activePreset === 720 ? 'active' : ''}">30 Gün
+                                        class="preset-btn ${this._activePreset === 720 ? 'active' : ''}">
+                                    ${localize('common.preset_30_day')}
                                 </button>
                             </div>
                         ` : ''}
                         ${this._config.showDatePickers !== false ? html`
                             <div class="date-input-container">
                                 <div class="date-input-wrapper">
-                                    <label>Başlangıç</label>
+                                    <label>${localize('common.beginning')}</label>
                                     <input
                                             type="datetime-local"
                                             .value=${this._range.start ? this._formatDateTimeLocal(this._range.start) : ''}
@@ -234,7 +239,7 @@ export class TrendAnalysisCard extends LitElement {
                                     />
                                 </div>
                                 <div class="date-input-wrapper">
-                                    <label>Bitiş</label>
+                                    <label>${localize('common.end')}</label>
                                     <input
                                             type="datetime-local"
                                             .value=${this._range.end ? this._formatDateTimeLocal(this._range.end) : ''}
@@ -258,15 +263,15 @@ export class TrendAnalysisCard extends LitElement {
                                                     ? html`
                                                         <div>${r}</div>`
                                                     : html`
-                                                        <div>Başlangıç: ${r.start} ${unit}</div>
-                                                        <div>Bitiş: ${r.end} ${unit}</div>
-                                                        <div class="trend-up">🔺 Artış Toplamı: ${r.increase} ${unit}
+                                                        <div>${localize('common.beginning')}: ${r.start} ${unit}</div>
+                                                        <div>${localize('common.end')}: ${r.end} ${unit}</div>
+                                                        <div class="trend-up">🔺 ${localize('common.total_increase')}: ${r.increase} ${unit}
                                                         </div>
-                                                        <div class="trend-down">🔻 Düşüş Toplamı: ${r.decrease} ${unit}
+                                                        <div class="trend-down">🔻 ${localize('common.total_decrease')}: ${r.decrease} ${unit}
                                                         </div>
                                                         <div class=${r.trend === "up" ? "trend-up" : r.trend === "down" ? "trend-down" : "trend-neutral"}>
                                                             ${r.trend === "up" ? "📈" : r.trend === "down" ? "📉" : "➖"}
-                                                            Net Değişim: ${r.delta} ${unit} (${r.pct}%)
+                                                            ${localize('common.delta')}: ${r.delta} ${unit} (${r.pct}%)
                                                         </div>`}
                                 </div>`}
                 </div>

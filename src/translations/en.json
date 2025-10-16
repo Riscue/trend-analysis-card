@@ -1,6 +1,18 @@
 {
   "common": {
     "name": "Trend Analysis",
-    "name_entity": "{{entity_name}} Trend"
+    "name_entity": "{{entity_name}} Trend",
+    "no_data": "No data!",
+    "preset_1_hour": "1 Hour",
+    "preset_12_hour": "12 Hours",
+    "preset_24_hour": "24 Hours",
+    "preset_7_day": "7 Day",
+    "preset_30_day": "30 Days",
+    "search_placeholder": "Search sensor...",
+    "beginning": "Beginning",
+    "end": "End",
+    "total_increase": "Total Increase",
+    "total_decrease": "Total Decrease",
+    "delta": "Net Change"
   }
 }

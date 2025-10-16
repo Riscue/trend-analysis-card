@@ -1,6 +1,18 @@
 {
   "common": {
     "name": "Trend Analizi",
-    "name_entity": "{{entity_name}} Değişimi"
+    "name_entity": "{{entity_name}} Değişimi",
+    "no_data": "Veri yok!",
+    "preset_1_hour": "1 Saat",
+    "preset_12_hour": "12 Saat",
+    "preset_24_hour": "24 Saat",
+    "preset_7_day": "7 Gün",
+    "preset_30_day": "30 Gün",
+    "search_placeholder": "Sensör ara...",
+    "beginning": "Başlangıç",
+    "end": "Bitiş",
+    "total_increase": "Toplam Artış",
+    "total_decrease": "Toplam Düşüş",
+    "delta": "Net Değişim"
   }
 }
