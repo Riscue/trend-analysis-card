@@ -1,5 +1,9 @@
 # Trend Analysis Card for Home Assistant
 
+## About
+
+This Lovelace custom card for Home Assistant provides clear insights into sensor trends by computing and displaying net change, upward shifts and downward shifts over your chosen interval. Whether you're tracking energy usage, temperature drift or other metrics, the card puts the story front and centre. Easy to install and configure via HACS or manual installation—just add your sensor and start visualising.
+
 ![SS1](assets/ss1.png)
 
 ## 🚀 Installation
