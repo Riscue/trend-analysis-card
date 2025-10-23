@@ -4,7 +4,7 @@
 import * as en from './translations/en.json';
 import * as tr from './translations/tr.json';
 
-const FALLBACK_LANGUAGE = 'tr';
+const FALLBACK_LANGUAGE = 'en';
 const lang = (localStorage.getItem('selectedLanguage') || FALLBACK_LANGUAGE).replace(/['"]+/g, '').replace('-', '_');
 const languages: any = {
     en,
