@@ -56,36 +56,60 @@ export class TrendAnalysisCard extends LitElement {
             .filter((p: any) => !isNaN(p.v));
     }
 
+    async fetchInfluxdb(start: string, end: string) {
+        const entity = this._config.entity;
+        if (!entity) return [];
+        try {
+            const resp: any = await this._hass.callApi(
+                "GET",
+                `influxdb_query_api/query/${entity}?start=${start}&end=${end}`
+            );
+            if (!resp || !Array.isArray(resp) || !resp.length) return [];
+            return resp
+                .map((i: any) => ({t: new Date(i.time), v: parseFloat(i.value)}))
+                .filter((p: any) => !isNaN(p.v));
+        } catch (e) {
+            console.error("Influxdb fetch failed:", e);
+            throw new Error("error.influxdb");
+        }
+    }
+
     async calculate() {
         if (!this._range.start || !this._range.end) return;
         this._loading = true;
         this._result = undefined;
 
-        const start = new Date(this._range.start).toISOString();
-        const end = new Date(this._range.end).toISOString();
-        const data = await this.fetchHistory(start, end);
+        try {
+            const start = new Date(this._range.start).toISOString();
+            const end = new Date(this._range.end).toISOString();
+            const data = this._config.source === 'influxdb' ?
+                await this.fetchInfluxdb(start, end) :
+                await this.fetchHistory(start, end);
 
-        let increase = 0;
-        let decrease = 0;
-        if (data.length >= 2) {
-            for (let i = 1; i < data.length; i++) {
-                const diff = data[i].v - data[i - 1].v;
-                if (diff > 0) increase += diff;
-                else decrease += Math.abs(diff);
+            let increase = 0;
+            let decrease = 0;
+            if (data.length >= 2) {
+                for (let i = 1; i < data.length; i++) {
+                    const diff = data[i].v - data[i - 1].v;
+                    if (diff > 0) increase += diff;
+                    else decrease += Math.abs(diff);
+                }
             }
-        }
-        if (data.length != 0) {
-            const netChange = data[data.length - 1].v - data[0].v;
-            this._result = {
-                start: data[0].v.toFixed(2),
-                end: data[data.length - 1].v.toFixed(2),
-                increase: increase.toFixed(2),
-                decrease: decrease.toFixed(2),
-                delta: netChange.toFixed(2),
-                trend: netChange > 0 ? "up" : netChange < 0 ? "down" : "neutral",
-            };
-        } else {
-            this._result = localize('common.no_data');
+            if (data.length != 0) {
+                const netChange = data[data.length - 1].v - data[0].v;
+                this._result = {
+                    start: data[0].v.toFixed(2),
+                    end: data[data.length - 1].v.toFixed(2),
+                    increase: increase.toFixed(2),
+                    decrease: decrease.toFixed(2),
+                    delta: netChange.toFixed(2),
+                    trend: netChange > 0 ? "up" : netChange < 0 ? "down" : "neutral",
+                };
+            } else {
+                this._result = 'common.no_data';
+            }
+        } catch (e: any) {
+            this._result = e.message;
         }
 
         this._loading = false;
@@ -265,14 +289,21 @@ export class TrendAnalysisCard extends LitElement {
                                     ${!r
                                             ? html``
                                             : typeof r === "string"
-                                                    ? html`
-                                                        <div>${r}</div>`
+                                                    ? r === "error.influxdb"
+                                                            ? html`
+                                                                <div>${localize(r)}</div>
+                                                                <a href="https://github.com/Riscue/ha-influxdb-query-api"
+                                                                   target="_blank">https://github.com/Riscue/ha-influxdb-query-api</a>`
+                                                            : html`
+                                                                <div>${localize(r)}</div>`
                                                     : html`
                                                         <div>${localize('common.beginning')}: ${r.start} ${unit}</div>
                                                         <div>${localize('common.end')}: ${r.end} ${unit}</div>
-                                                        <div class="trend-up">🔺 ${localize('common.total_increase')}: ${r.increase} ${unit}
+                                                        <div class="trend-up">🔺 ${localize('common.total_increase')}:
+                                                            ${r.increase} ${unit}
                                                         </div>
-                                                        <div class="trend-down">🔻 ${localize('common.total_decrease')}: ${r.decrease} ${unit}
+                                                        <div class="trend-down">🔻 ${localize('common.total_decrease')}:
+                                                            ${r.decrease} ${unit}
                                                         </div>
                                                         <div class=${r.trend === "up" ? "trend-up" : r.trend === "down" ? "trend-down" : "trend-neutral"}>
                                                             ${r.trend === "up" ? "📈" : r.trend === "down" ? "📉" : "➖"}
