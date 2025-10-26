@@ -1,0 +1,21 @@
+{
+  "common": {
+    "name": "Analisi delle tendenze",
+    "name_entity": "Trend di {{entity_name}}",
+    "no_data": "Nessun dato!",
+    "preset_1_hour": "1 Ora",
+    "preset_12_hour": "12 Ore",
+    "preset_24_hour": "24 Ore",
+    "preset_7_day": "7 Giorni",
+    "preset_30_day": "30 Giorni",
+    "search_placeholder": "Cerca sensore...",
+    "beginning": "Inizio",
+    "end": "Fine",
+    "total_increase": "Aumento Totale",
+    "total_decrease": "Diminuzione Totale",
+    "delta": "Variazione Netta"
+  },
+  "error": {
+    "influxdb": "InfluxDB non è disponibile. Si prega di rivedere le note di installazione"
+  }
+}

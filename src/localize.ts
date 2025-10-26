@@ -3,6 +3,7 @@
 
 import * as de from './translations/de.json';
 import * as en from './translations/en.json';
+import * as it from './translations/it.json';
 import * as tr from './translations/tr.json';
 
 const FALLBACK_LANGUAGE = 'tr';
@@ -10,6 +11,7 @@ const lang = (localStorage.getItem('selectedLanguage') || FALLBACK_LANGUAGE).rep
 const languages: any = {
     de,
     en,
+    it,
     tr,
 };
 
