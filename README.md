@@ -2,7 +2,10 @@
 
 ## About
 
-This Lovelace custom card for Home Assistant provides clear insights into sensor trends by computing and displaying net change, upward shifts and downward shifts over your chosen interval. Whether you're tracking energy usage, temperature drift or other metrics, the card puts the story front and centre. Easy to install and configure via HACS or manual installation—just add your sensor and start visualising.
+This Lovelace custom card for Home Assistant provides clear insights into sensor trends by computing and displaying net
+change, upward shifts and downward shifts over your chosen interval. Whether you're tracking energy usage, temperature
+drift or other metrics, the card puts the story front and centre. Easy to install and configure via HACS or manual
+installation—just add your sensor and start visualising.
 
 ![SS1](assets/ss1.png)
 
@@ -40,14 +43,15 @@ showDatePickers: false
 
 ---
 
-| Name                | Type      | Required | Default              | Description                                                                                                          |
-|---------------------|-----------|----------|----------------------|----------------------------------------------------------------------------------------------------------------------|
-| **entity**          | `string`  | ❌ No     | -                    | The entity ID of the sensor to analyze (e.g. `sensor.energy_usage`). If empty an entity must be selected from search |
-| **header**          | `string`  | ❌ No     | entity.friendly_name | Card title displayed in the header.                                                                                  |
-| **preset**          | `number`  | ❌ No     | `24`                 | Default preset range in hours (e.g. `24`, `168` for 7 days).                                                         |
-| **showSettings**    | `boolean` | ❌ No     | `true`               | Whether to show a settings button.                                                                                   |
-| **showPresets**     | `boolean` | ❌ No     | `true`               | Whether to display quick range selection buttons (24h, 7d, 30d).                                                     |
-| **showDatePickers** | `boolean` | ❌ No     | `true`               | Whether to display the date range picker for manual selection.                                                       |
+| Name                | Type                 | Required | Default              | Description                                                                                                               |
+|---------------------|----------------------|----------|----------------------|---------------------------------------------------------------------------------------------------------------------------|
+| **entity**          | `string`             | ❌ No     | -                    | The entity ID of the sensor to analyze (e.g. `sensor.energy_usage`). If empty an entity must be selected from search      |
+| **header**          | `string`             | ❌ No     | entity.friendly_name | Card title displayed in the header.                                                                                       |
+| **preset**          | `number`             | ❌ No     | `24`                 | Default preset range in hours (e.g. `24`, `168` for 7 days).                                                              |
+| **source**          | `recorder\|influxdb` | ❌ No     | `recorder`           | Data source option. See [influxdb-query-api](https://github.com/Riscue/ha-influxdb-query-api) to use influxdb data source |
+| **showSettings**    | `boolean`            | ❌ No     | `true`               | Whether to show a settings button.                                                                                        |
+| **showPresets**     | `boolean`            | ❌ No     | `true`               | Whether to display quick range selection buttons (24h, 7d, 30d).                                                          |
+| **showDatePickers** | `boolean`            | ❌ No     | `true`               | Whether to display the date range picker for manual selection.                                                            |
 
 ---
 

@@ -1,12 +1,14 @@
 // Borrowed from:
 // https://github.com/custom-cards/boilerplate-card/blob/master/src/localize/localize.ts
 
+import * as de from './translations/de.json';
 import * as en from './translations/en.json';
 import * as tr from './translations/tr.json';
 
 const FALLBACK_LANGUAGE = 'en';
 const lang = (localStorage.getItem('selectedLanguage') || FALLBACK_LANGUAGE).replace(/['"]+/g, '').replace('-', '_');
 const languages: any = {
+    de,
     en,
     tr,
 };

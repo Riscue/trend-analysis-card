@@ -14,5 +14,8 @@
     "total_increase": "Total Increase",
     "total_decrease": "Total Decrease",
     "delta": "Net Change"
+  },
+  "error": {
+    "influxdb": "InfluxDB is unavailable. Please review the installation notes"
   }
 }

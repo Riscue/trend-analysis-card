@@ -1,0 +1,21 @@
+{
+  "common": {
+    "name": "Trend-Analyse",
+    "name_entity": "{{entity_name}} Trend",
+    "no_data": "Keine Daten!",
+    "preset_1_hour": "1 Stunde",
+    "preset_12_hour": "12 Stunden",
+    "preset_24_hour": "24 Stunden",
+    "preset_7_day": "7 Tage",
+    "preset_30_day": "30 Tage",
+    "search_placeholder": "Sensor suchen...",
+    "beginning": "Start",
+    "end": "Ende",
+    "total_increase": "Gesamtzunahme",
+    "total_decrease": "Gesamtabnahme",
+    "delta": "Netto-Änderung"
+  },
+  "error": {
+    "influxdb": "InfluxDB ist nicht verfügbar. Bitte überprüfen Sie die Installationshinweise"
+  }
+}

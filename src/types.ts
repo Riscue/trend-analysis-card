@@ -14,6 +14,7 @@ export interface CardConfig {
     header: string;
     entity: string;
     preset?: number;
+    source?: 'recorder' | 'influxdb';
     showSettings?: boolean;
     showPresets?: boolean;
     showDatePickers?: boolean;
