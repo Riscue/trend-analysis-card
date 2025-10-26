@@ -49,6 +49,7 @@ showDatePickers: false
 | **header**          | `string`             | ❌ No     | entity.friendly_name | Card title displayed in the header.                                                                                       |
 | **preset**          | `number`             | ❌ No     | `24`                 | Default preset range in hours (e.g. `24`, `168` for 7 days).                                                              |
 | **source**          | `recorder\|influxdb` | ❌ No     | `recorder`           | Data source option. See [influxdb-query-api](https://github.com/Riscue/ha-influxdb-query-api) to use influxdb data source |
+| **language**        | `de\|en\|fr\|it\|tr` | ❌ No     | `en`                 | Language option                                                                                                           |
 | **showSettings**    | `boolean`            | ❌ No     | `true`               | Whether to show a settings button.                                                                                        |
 | **showPresets**     | `boolean`            | ❌ No     | `true`               | Whether to display quick range selection buttons (24h, 7d, 30d).                                                          |
 | **showDatePickers** | `boolean`            | ❌ No     | `true`               | Whether to display the date range picker for manual selection.                                                            |

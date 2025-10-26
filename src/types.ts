@@ -6,6 +6,8 @@ declare global {
     }
 }
 
+export type Language = 'de' | 'en' | 'fr' | 'it' | 'tr';
+export type Translations = Record<string, any>;
 
 export type TemplateNothing = typeof nothing;
 export type Template = TemplateResult | TemplateNothing;
@@ -15,6 +17,7 @@ export interface CardConfig {
     entity: string;
     preset?: number;
     source?: 'recorder' | 'influxdb';
+    language?: Language;
     showSettings?: boolean;
     showPresets?: boolean;
     showDatePickers?: boolean;

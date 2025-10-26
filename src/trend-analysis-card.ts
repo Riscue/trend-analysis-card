@@ -1,6 +1,6 @@
 import {CSSResultGroup, html, LitElement} from 'lit';
 import registerTemplates from 'ha-template';
-import {localize} from './localize';
+import {localize, setLanguage} from './localize';
 import {fireEvent, HomeAssistant} from 'custom-card-helpers';
 import styles from './styles.css';
 import {customElement, property, state} from 'lit/decorators.js';
@@ -33,6 +33,7 @@ export class TrendAnalysisCard extends LitElement {
     public setConfig(config: CardConfig): void {
         this._config = config;
         this._activePreset = this._config.preset || 24;
+        setLanguage(this._config.language);
     }
 
     set hass(hass: HomeAssistant) {
@@ -41,6 +42,7 @@ export class TrendAnalysisCard extends LitElement {
 
     firstUpdated() {
         this._setPreset(this._config.preset || 24);
+        setLanguage(this._config.language);
     }
 
     async fetchHistory(start: string, end: string) {
