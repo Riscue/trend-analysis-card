@@ -1,7 +1,7 @@
 services:
   npm-builder:
     image: node:20-alpine
-    container_name: npm-build-container
+    container_name: trend-analysis-card-npm
     working_dir: /app
     volumes:
       - ./:/app
