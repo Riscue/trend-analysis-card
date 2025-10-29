@@ -22,7 +22,6 @@ let currentLang: Language = FALLBACK_LANGUAGE;
 
 export function setLanguage(language?: Language) {
     currentLang = language && languages[language] ? language : FALLBACK_LANGUAGE;
-    console.log(currentLang);
 }
 
 function getTranslation(path: string, lang: Language): string | undefined {
