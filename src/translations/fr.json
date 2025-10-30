@@ -16,7 +16,7 @@
     "total_increase": "AUGMENTATION TOTALE",
     "total_decrease": "DIMINUTION TOTALE",
     "delta": "VARIATION NETTE",
-    "chart_title": "GRAPHIQUE DE TENDANCE"
+    "graph_title": "GRAPHIQUE DE TENDANCE"
   },
   "error": {
     "influxdb": "InfluxDB n'est pas disponible. Veuillez consulter les notes d'installation",

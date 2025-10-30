@@ -9,7 +9,7 @@ import {CardConfig, Template, TrendData, TrendResult} from './types';
 registerTemplates();
 
 const DEFAULT_PRESET = 24;
-const CHART_MAX_BARS = 30;
+const GRAPH_MAX_BARS = 30;
 
 const PKG_VERSION = 'PKG_VERSION_VALUE';
 
@@ -124,7 +124,7 @@ export class TrendAnalysisCard extends LitElement {
                     decrease: decrease,
                     delta: netChange,
                     trend: netChange > 0 ? "up" : netChange < 0 ? "down" : "neutral",
-                    chartData: this._prepareChartData(data)
+                    graphData: this._prepareGraphData(data)
                 };
             } else {
                 this._result = localize('common.no_data');
@@ -144,10 +144,10 @@ export class TrendAnalysisCard extends LitElement {
         this._loading = false;
     }
 
-    private _prepareChartData(data: TrendData[]): number[] {
+    private _prepareGraphData(data: TrendData[]): number[] {
         if (data.length < 2) return [];
 
-        const step = Math.max(1, Math.floor(data.length / CHART_MAX_BARS));
+        const step = Math.max(1, Math.floor(data.length / GRAPH_MAX_BARS));
         const sampledData: TrendData[] = [];
 
         for (let i = 0; i < data.length; i += step) {
@@ -158,11 +158,11 @@ export class TrendAnalysisCard extends LitElement {
             sampledData.push(data[data.length - 1]);
         }
 
-        const chartData: number[] = [];
+        const graphData: number[] = [];
         for (let i = 1; i < sampledData.length; i++) {
-            chartData.push(sampledData[i].v - sampledData[i - 1].v);
+            graphData.push(sampledData[i].v - sampledData[i - 1].v);
         }
-        return chartData;
+        return graphData;
     }
 
     private _showMoreInfo() {
@@ -422,22 +422,26 @@ export class TrendAnalysisCard extends LitElement {
         `;
     }
 
-    private renderChart(): Template {
+    private renderGraph(): Template {
         if (this._result === undefined || typeof this._result === 'string') {
+            return nothing;
+        }
+
+        if (this._config.showGraph === false) {
             return nothing;
         }
 
         const startDate: string = this._formatDateHumanReadable(this._result.start) || '';
         const endDate: string = this._formatDateHumanReadable(this._result.end) || '';
-        const chartData: number[] = this._result.chartData || [];
-        if (chartData.length === 0) {
+        const graphData: number[] = this._result.graphData || [];
+        if (graphData.length === 0) {
             return html`
-                <div class="mini-chart">
-                    <div class="chart-header">
-                        <span>${localize('common.chart_title')}</span>
+                <div class="mini-graph">
+                    <div class="graph-header">
+                        <span>${localize('common.graph_title')}</span>
                         <ha-icon icon="mdi:chart-line"></ha-icon>
                     </div>
-                    <div class="chart-empty">
+                    <div class="graph-empty">
                         <p>${localize('common.no_data')}</p>
                     </div>
                 </div>
@@ -446,42 +450,42 @@ export class TrendAnalysisCard extends LitElement {
 
         const entityState = this._hass.states[this._config.entity];
         const unit = entityState?.attributes?.unit_of_measurement || '';
-        const maxAbsValue = Math.max(...chartData.map((d: any) => Math.abs(d)));
+        const maxAbsValue = Math.max(...graphData.map((d: any) => Math.abs(d)));
         const scale = maxAbsValue > 0 ? 100 / maxAbsValue : 1;
 
         return html`
-            <div class="mini-chart">
-                <div class="chart-header">
+            <div class="mini-graph">
+                <div class="graph-header">
                     <div>
-                        <span>${localize('common.chart_title')}</span>
+                        <span>${localize('common.graph_title')}</span>
                         <span class="dates">(${startDate} - ${endDate})</span>
                     </div>
                     <ha-icon icon="mdi:chart-line"></ha-icon>
                 </div>
-                <div class="chart-bars">
-                    ${chartData.map((item: any) => {
+                <div class="graph-bars">
+                    ${graphData.map((item: any) => {
                         const scaledValue = item * scale;
                         const absHeight = Math.abs(scaledValue);
 
                         if (item === 0) {
                             return html`
-                                <div class="chart-bar-wrapper">
-                                    <div class="chart-bar neutral">
+                                <div class="graph-bar-wrapper">
+                                    <div class="graph-bar neutral">
                                     </div>
                                 </div>
                             `;
                         } else if (item > 0) {
                             return html`
-                                <div class="chart-bar-wrapper">
-                                    <div class="chart-bar positive" style="height: ${absHeight / 2}%">
+                                <div class="graph-bar-wrapper">
+                                    <div class="graph-bar positive" style="height: ${absHeight / 2}%">
                                         <span class="bar-tooltip">+${item.toFixed(2)} ${unit}</span>
                                     </div>
                                 </div>
                             `;
                         } else if (item < 0) {
                             return html`
-                                <div class="chart-bar-wrapper">
-                                    <div class="chart-bar negative"
+                                <div class="graph-bar-wrapper">
+                                    <div class="graph-bar negative"
                                          style="height: ${absHeight / 2}%; bottom: ${50 - absHeight / 2}%">
                                         <span class="bar-tooltip">${item.toFixed(2)} ${unit}</span>
                                     </div>
@@ -510,7 +514,7 @@ export class TrendAnalysisCard extends LitElement {
                                 </div>` :
                             html`
                                 ${this.renderChanges()}
-                                ${this.renderChart()}`
+                                ${this.renderGraph()}`
                     }
                 </div>
             </ha-card>

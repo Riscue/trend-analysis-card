@@ -16,7 +16,7 @@
     "total_increase": "TOPLAM ARTIŞ",
     "total_decrease": "TOPLAM DÜŞÜŞ",
     "delta": "NET DEĞİŞİM",
-    "chart_title": "TREND GRAFİĞİ"
+    "graph_title": "TREND GRAFİĞİ"
   },
   "error": {
     "influxdb": "InfluxDB kullanılamıyor. Lütfen kurulum notlarını inceleyin",

@@ -16,7 +16,7 @@
     "total_increase": "TOTAL INCREASE",
     "total_decrease": "TOTAL DECREASE",
     "delta": "NET CHANGE",
-    "chart_title": "TREND GRAPH"
+    "graph_title": "TREND GRAPH"
   },
   "error": {
     "influxdb": "InfluxDB is unavailable. Please review the installation notes",
