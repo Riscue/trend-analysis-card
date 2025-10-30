@@ -477,7 +477,7 @@ export class TrendAnalysisCard extends LitElement {
                         } else if (item > 0) {
                             return html`
                                 <div class="graph-bar-wrapper">
-                                    <div class="graph-bar positive" style="height: ${absHeight / 2}%">
+                                    <div class="graph-bar positive" style="height: calc(${absHeight / 2}%)">
                                         <span class="bar-tooltip">+${item.toFixed(2)} ${unit}</span>
                                     </div>
                                 </div>
@@ -486,7 +486,7 @@ export class TrendAnalysisCard extends LitElement {
                             return html`
                                 <div class="graph-bar-wrapper">
                                     <div class="graph-bar negative"
-                                         style="height: ${absHeight / 2}%; bottom: ${50 - absHeight / 2}%">
+                                         style="height: calc(${absHeight / 2}%); bottom: calc(${50 - absHeight / 2}%)">
                                         <span class="bar-tooltip">${item.toFixed(2)} ${unit}</span>
                                     </div>
                                 </div>
