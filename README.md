@@ -7,7 +7,8 @@ change, upward shifts and downward shifts over your chosen interval. Whether you
 drift or other metrics, the card puts the story front and centre. Easy to install and configure via HACS or manual
 installation—just add your sensor and start visualising.
 
-![SS1](assets/ss1.png)
+<img src="assets/light_theme.png" alt="drawing" width="400"/>
+<img src="assets/dark_theme.png" alt="drawing" width="400"/>
 
 ## 🚀 Installation
 
@@ -43,6 +44,8 @@ showDatePickers: false
 
 ---
 
+## ⚙️ Configuration
+
 | Name                | Type                 | Required | Default              | Description                                                                                                               |
 |---------------------|----------------------|----------|----------------------|---------------------------------------------------------------------------------------------------------------------------|
 | **entity**          | `string`             | ❌ No     | -                    | The entity ID of the sensor to analyze (e.g. `sensor.energy_usage`). If empty an entity must be selected from search      |
@@ -53,6 +56,50 @@ showDatePickers: false
 | **showSettings**    | `boolean`            | ❌ No     | `true`               | Whether to show a settings button.                                                                                        |
 | **showPresets**     | `boolean`            | ❌ No     | `true`               | Whether to display quick range selection buttons (24h, 7d, 30d).                                                          |
 | **showDatePickers** | `boolean`            | ❌ No     | `true`               | Whether to display the date range picker for manual selection.                                                            |
+
+---
+
+## 📐 Styling
+
+Configurable css variables:
+
+```
+--trend-primary: var(--primary-color, #6366f1);
+--trend-secondary: var(--secondary-color, #8b5cf6);
+
+--trend-bg: var(--card-background-color, #ffffff);
+--trend-surface: var(--card-background-color, #f8fafc);
+
+--trend-text-primary: var(--primary-text-color, #64748b);
+--trend-text-secondary: var(--secondary-text-color, #0f172a);
+
+--trend-border-color: var(--divider-color, #e0e0e0);
+
+--trend-increase: #10b981;
+--trend-increase-light: #34d399;
+--trend-increase-secondary: #6ee7b7;
+--trend-increase-shadow: rgba(16, 185, 129, 0.15);
+
+--trend-decrease: #ef4444;
+--trend-decrease-light: #f87171;
+--trend-decrease-secondary: #fca5a5;
+--trend-decrease-shadow: rgba(239, 68, 68, 0.15);
+
+--trend-neutral: #94a3b8;
+```
+
+Example usage:
+
+```
+type: custom:trend-analysis-card
+entity: sensor.my_sensor
+card_mod:
+  style: |-
+    ha-card {
+      --trend-primary: orange;
+      --trend-secondary: orange;
+    }
+```
 
 ---
 

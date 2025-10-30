@@ -8,14 +8,18 @@
     "preset_24_hour": "24 Heures",
     "preset_7_day": "7 Jours",
     "preset_30_day": "30 Jours",
-    "search_placeholder": "Rechercher un capteur...",
-    "beginning": "Début",
-    "end": "Fin",
-    "total_increase": "Augmentation totale",
-    "total_decrease": "Diminution totale",
-    "delta": "Variation nette"
+    "preset_dates": "Dates",
+    "beginning": "DÉBUT",
+    "end": "FIN",
+    "increase": "AUGMENTATION",
+    "decrease": "DIMINUTION",
+    "total_increase": "AUGMENTATION TOTALE",
+    "total_decrease": "DIMINUTION TOTALE",
+    "delta": "VARIATION NETTE",
+    "chart_title": "GRAPHIQUE DE TENDANCE"
   },
   "error": {
-    "influxdb": "InfluxDB n'est pas disponible. Veuillez consulter les notes d'installation"
+    "influxdb": "InfluxDB n'est pas disponible. Veuillez consulter les notes d'installation",
+    "unknown": "Erreur inconnue: {{message}}"
   }
 }

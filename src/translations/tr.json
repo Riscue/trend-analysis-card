@@ -8,14 +8,18 @@
     "preset_24_hour": "24 Saat",
     "preset_7_day": "7 Gün",
     "preset_30_day": "30 Gün",
-    "search_placeholder": "Sensör ara...",
-    "beginning": "Başlangıç",
-    "end": "Bitiş",
-    "total_increase": "Toplam Artış",
-    "total_decrease": "Toplam Düşüş",
-    "delta": "Net Değişim"
+    "preset_dates": "Tarih",
+    "beginning": "BAŞLANGIÇ",
+    "end": "BİTİŞ",
+    "increase": "ARTIŞ",
+    "decrease": "DÜŞÜŞ",
+    "total_increase": "TOPLAM ARTIŞ",
+    "total_decrease": "TOPLAM DÜŞÜŞ",
+    "delta": "NET DEĞİŞİM",
+    "chart_title": "TREND GRAFİĞİ"
   },
   "error": {
-    "influxdb": "InfluxDB kullanılamıyor. Lütfen kurulum notlarını inceleyin"
+    "influxdb": "InfluxDB kullanılamıyor. Lütfen kurulum notlarını inceleyin",
+    "unknown": "Bilinmeyen Hata: {{message}}"
   }
 }
