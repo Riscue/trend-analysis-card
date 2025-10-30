@@ -8,14 +8,18 @@
     "preset_24_hour": "24 Hours",
     "preset_7_day": "7 Day",
     "preset_30_day": "30 Days",
-    "search_placeholder": "Search sensor...",
-    "beginning": "Beginning",
-    "end": "End",
-    "total_increase": "Total Increase",
-    "total_decrease": "Total Decrease",
-    "delta": "Net Change"
+    "preset_dates": "Dates",
+    "beginning": "BEGINNING",
+    "end": "END",
+    "increase": "INCREASE",
+    "decrease": "DECREASE",
+    "total_increase": "TOTAL INCREASE",
+    "total_decrease": "TOTAL DECREASE",
+    "delta": "NET CHANGE",
+    "chart_title": "TREND GRAPH"
   },
   "error": {
-    "influxdb": "InfluxDB is unavailable. Please review the installation notes"
+    "influxdb": "InfluxDB is unavailable. Please review the installation notes",
+    "unknown": "Unknown error: {{message}}"
   }
 }

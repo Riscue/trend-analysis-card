@@ -8,14 +8,18 @@
     "preset_24_hour": "24 Stunden",
     "preset_7_day": "7 Tage",
     "preset_30_day": "30 Tage",
-    "search_placeholder": "Sensor suchen...",
-    "beginning": "Start",
-    "end": "Ende",
-    "total_increase": "Gesamtzunahme",
-    "total_decrease": "Gesamtabnahme",
-    "delta": "Netto-Änderung"
+    "preset_dates": "Datum",
+    "beginning": "START",
+    "end": "ENDE",
+    "increase": "ANSTIEG",
+    "decrease": "RÜCKGANG",
+    "total_increase": "GESAMTZUNAHME",
+    "total_decrease": "GESAMTABNAHME",
+    "delta": "NETTO-ÄNDERUNG",
+    "chart_title": "TRENDGRAFIK"
   },
   "error": {
-    "influxdb": "InfluxDB ist nicht verfügbar. Bitte überprüfen Sie die Installationshinweise"
+    "influxdb": "InfluxDB ist nicht verfügbar. Bitte überprüfen Sie die Installationshinweise",
+    "unknown": "Unbekannter Fehler: {{message}}"
   }
 }
