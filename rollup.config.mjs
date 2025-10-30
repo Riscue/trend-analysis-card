@@ -9,10 +9,10 @@ import postcss from 'rollup-plugin-postcss';
 import postcssPresetEnv from 'postcss-preset-env';
 import postcssLit from 'rollup-plugin-postcss-lit';
 import terser from '@rollup/plugin-terser';
-import minifyLiterals from 'rollup-plugin-minify-html-literals-v3';
 import replace from '@rollup/plugin-replace';
 import serve from 'rollup-plugin-serve';
 import image from '@rollup/plugin-image';
+import { literalsHtmlCssMinifier } from '@literals/rollup-plugin-html-css-minifier';
 
 const require = createRequire(import.meta.url);
 const pkg = require('./package.json');
@@ -42,10 +42,10 @@ const plugins = [
   postcssLit(),
   image(),
   typescript(),
+  !IS_DEV && literalsHtmlCssMinifier({}),
+  !IS_DEV && terser({format: {comments: false}}),
   babel({babelHelpers: 'runtime', exclude: 'node_modules/**'}),
   IS_DEV && serve(serverOptions),
-  !IS_DEV && minifyLiterals(),
-  !IS_DEV && terser({format: {comments: false}})
 ].filter(Boolean);
 
 export default {
