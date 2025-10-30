@@ -56,6 +56,7 @@ showDatePickers: false
 | **showSettings**    | `boolean`            | ❌ No     | `true`               | Whether to show a settings button.                                                                                        |
 | **showPresets**     | `boolean`            | ❌ No     | `true`               | Whether to display quick range selection buttons (24h, 7d, 30d).                                                          |
 | **showDatePickers** | `boolean`            | ❌ No     | `true`               | Whether to display the date range picker for manual selection.                                                            |
+| **showGraph**       | `boolean`            | ❌ No     | `true`               | Whether to display the graph of increases and decreases.                                                                  |
 
 ---
 

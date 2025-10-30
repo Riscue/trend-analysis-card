@@ -16,7 +16,7 @@
     "total_increase": "GESAMTZUNAHME",
     "total_decrease": "GESAMTABNAHME",
     "delta": "NETTO-ÄNDERUNG",
-    "chart_title": "TRENDGRAFIK"
+    "graph_title": "TRENDGRAFIK"
   },
   "error": {
     "influxdb": "InfluxDB ist nicht verfügbar. Bitte überprüfen Sie die Installationshinweise",

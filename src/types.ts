@@ -26,7 +26,7 @@ export interface TrendResult {
     decrease: number;
     delta: number;
     trend: 'up' | 'down' | 'neutral';
-    chartData: number[];
+    graphData: number[];
 }
 
 export interface CardConfig {
@@ -38,4 +38,5 @@ export interface CardConfig {
     showSettings?: boolean;
     showPresets?: boolean;
     showDatePickers?: boolean;
+    showGraph?: boolean;
 }

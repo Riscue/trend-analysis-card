@@ -386,7 +386,7 @@
     box-shadow: 0 6px 8px -1px color-mix(in srgb, var(--trend-primary) 60%, transparent);
 }
 
-.mini-chart {
+.mini-graph {
     background: var(--trend-surface);
     border-radius: 16px;
     padding: 16px;
@@ -394,29 +394,29 @@
     margin-top: 16px;
 }
 
-.chart-header {
+.graph-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.chart-header span {
+.graph-header span {
     font-size: 12px;
     font-weight: 600;
     color: var(--trend-text-primary);
     letter-spacing: 0.05em;
 }
 
-.chart-header span.dates {
+.graph-header span.dates {
     font-size: 11px;
 }
 
-.chart-header ha-icon {
+.graph-header ha-icon {
     --mdc-icon-size: 16px;
     color: var(--trend-text-primary);
 }
 
-.chart-bars {
+.graph-bars {
     position: relative;
     height: 120px;
     display: flex;
@@ -426,7 +426,7 @@
     padding: 0;
 }
 
-.chart-bars::before {
+.graph-bars::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -437,7 +437,7 @@
     z-index: 0;
 }
 
-.chart-bar-wrapper {
+.graph-bar-wrapper {
     position: relative;
     flex: 1;
     height: 100%;
@@ -446,15 +446,15 @@
     justify-content: center;
 }
 
-.chart-bar-wrapper:hover {
+.graph-bar-wrapper:hover {
     opacity: 0.8;
 }
 
-.chart-bar-wrapper:hover .bar-tooltip {
+.graph-bar-wrapper:hover .bar-tooltip {
     opacity: 1;
 }
 
-.chart-bar {
+.graph-bar {
     position: absolute;
     width: 100%;
     border-radius: 4px 4px 0 0;
@@ -463,20 +463,20 @@
     z-index: 1;
 }
 
-.chart-bar.positive {
+.graph-bar.positive {
     bottom: 50%;
     background: linear-gradient(to top, var(--trend-increase) 0%, var(--trend-increase-light) 100%);
     box-shadow: 0 -2px 12px var(--trend-increase-shadow);
 }
 
-.chart-bar.negative {
+.graph-bar.negative {
     top: 50%;
     background: linear-gradient(to bottom, var(--trend-decrease) 0%, var(--trend-decrease-light) 100%);
     box-shadow: 0 2px 12px var(--trend-decrease-shadow);
     border-radius: 0 0 4px 4px;
 }
 
-.chart-bar.neutral {
+.graph-bar.neutral {
     width: 100%;
     height: 2px;
     top: 50%;
@@ -496,20 +496,20 @@
     pointer-events: none;
 }
 
-.chart-bar.positive .bar-tooltip {
+.graph-bar.positive .bar-tooltip {
     bottom: calc(100% + 4px);
 }
 
-.chart-bar.negative .bar-tooltip {
+.graph-bar.negative .bar-tooltip {
     top: calc(100% + 4px);
 }
 
-.chart-empty {
+.graph-empty {
     text-align: center;
     padding: 20px;
 }
 
-.chart-empty p {
+.graph-empty p {
     margin: 0;
     font-size: 13px;
     color: var(--trend-text-primary);
@@ -664,7 +664,7 @@
         font-size: 12px;
     }
 
-    .chart-bars {
+    .graph-bars {
         height: 100px;
     }
 }
