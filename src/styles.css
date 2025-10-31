@@ -147,7 +147,6 @@
     background: var(--trend-surface);
     border-radius: 16px;
     border: 1px solid var(--trend-border-color);
-    cursor: pointer;
 }
 
 .net-change:hover {
@@ -234,7 +233,6 @@
     border-radius: 16px;
     border: 1px solid var(--trend-border-color);
     transition: all 0.2s;
-    cursor: pointer;
 }
 
 .stat-card:hover {
@@ -459,7 +457,6 @@
     width: 100%;
     border-radius: 4px 4px 0 0;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer;
     z-index: 1;
 }
 
@@ -517,6 +514,7 @@
 
 .date-input-container {
     display: flex;
+    flex-direction: row;
     justify-content: space-evenly;
     gap: 12px;
     margin-bottom: 12px;
@@ -534,6 +532,7 @@
 }
 
 .date-input-wrapper label {
+    display: block;
     font-size: 12px;
     font-weight: 600;
     color: var(--trend-text-primary);
@@ -557,18 +556,8 @@
     box-shadow: 0 0 0 2px var(--trend-surface);
 }
 
-@media (prefers-color-scheme: light) {
-    .date-input-wrapper input[type="datetime-local"]::-webkit-calendar-picker-indicator {
-        filter: none;
-        cursor: pointer;
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    .date-input-wrapper input[type="datetime-local"]::-webkit-calendar-picker-indicator {
-        filter: invert(0.8);
-        cursor: pointer;
-    }
+.date-input-wrapper input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
 }
 
 .message {
@@ -625,6 +614,14 @@
 }
 
 @media (max-width: 600px) {
+    .date-input-container {
+        flex-direction: column;
+    }
+
+    .date-input-wrapper {
+        width: unset;
+    }
+
     .card-header,
     .card-content {
         padding: 16px;
