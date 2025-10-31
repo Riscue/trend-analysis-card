@@ -7,8 +7,7 @@ change, upward shifts and downward shifts over your chosen interval. Whether you
 drift or other metrics, the card puts the story front and centre. Easy to install and configure via HACS or manual
 installation—just add your sensor and start visualising.
 
-<img src="https://github.com/Riscue/trend-analysis-card/blob/master/assets/light_theme.png" alt="drawing" width="400"/>
-<img src="https://github.com/Riscue/trend-analysis-card/blob/master/assets/dark_theme.png" alt="drawing" width="400"/>
+![assets/ss.png](assets/ss.png)
 
 ## 🚀 Installation
 
