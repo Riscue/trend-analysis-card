@@ -1,6 +1,6 @@
 {
   "name": "trend-analysis-card",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "Trend Analysis card for Home Assistant Lovelace UI",
   "main": "dist/trend-analysis-card.js",

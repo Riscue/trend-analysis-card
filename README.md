@@ -1,5 +1,15 @@
 # Trend Analysis Card for Home Assistant
 
+[![Home Assistant](https://img.shields.io/badge/home%20assistant-%2341BDF5.svg?style=for-the-badge&logo=home-assistant&logoColor=white)](https://home-assistant.io)
+[![hacs](https://img.shields.io/badge/HACS-Default-orange.svg?style=for-the-badge)](https://github.com/hacs/default)
+[![License][license-shield]](LICENSE.md)
+
+[license-shield]: https://img.shields.io/github/license/Riscue/trend-analysis-card.svg?style=for-the-badge
+
+[![GitHub Release](https://img.shields.io/github/release/Riscue/trend-analysis-card.svg?style=for-the-badge)](https://github.com/Riscue/trend-analysis-card/releases)
+[![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/Riscue/trend-analysis-card/latest/total?label=downloads&style=for-the-badge)](https://github.com/Riscue/trend-analysis-card/releases)
+[![GitHub Activity](https://img.shields.io/github/commit-activity/y/Riscue/trend-analysis-card.svg?style=for-the-badge)](https://github.com/Riscue/trend-analysis-card/commits/master)
+
 ## About
 
 This Lovelace custom card for Home Assistant provides clear insights into sensor trends by computing and displaying net
@@ -17,7 +27,9 @@ installation—just add your sensor and start visualising.
 
 ### Manual Installation
 
-1. Copy the `dist/trend-analysis-card.js` file into your Home Assistant `www` directory.
+1. Download `trend-analysis-card.js` file
+   from [Latest Release](https://github.com/Riscue/trend-analysis-card/releases/latest) into your Home Assistant `www`
+   directory.
 2. Add the card as a Lovelace resource:
 
     ```yaml
@@ -105,6 +117,4 @@ card_mod:
 
 ## License
 
-MIT © [Riscue][riscue]
-
-[riscue]: https://github.com/riscue
+MIT © [Riscue](https://github.com/riscue)
