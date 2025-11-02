@@ -90,11 +90,10 @@ jobs:
 
       - name: Upload js to release
         if: steps.check_tag.outputs.exists == 'false'
-        uses: svenstaro/upload-release-action@81c65b7cd4de9b2570615ce3aad67a41de5b1a13 # 2.11.2
+        uses: softprops/action-gh-release@6da8fa9354ddfdc4aeace5fc48d7f679b5214090 # v2.4.1
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ${{ github.workspace }}/trend-analysis-card.js
-          asset_name: trend-analysis-card.js
-          tag: "v${{ steps.version.outputs.version }}"
-          overwrite: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          files: ${{ github.workspace }}/trend-analysis-card.js
+          tag_name: "v${{ steps.version.outputs.version }}"
           prerelease: ${{ contains(steps.version.outputs.version, 'beta') }}
+          generate_release_notes: true
