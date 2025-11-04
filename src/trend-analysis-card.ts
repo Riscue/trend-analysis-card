@@ -3,7 +3,7 @@ import {customElement, property, state} from 'lit/decorators.js';
 import registerTemplates from 'ha-template';
 import {fireEvent, HomeAssistant} from 'custom-card-helpers';
 import styles from './styles.css';
-import {localize, setLanguage} from './localize';
+import {localize, Localize} from "./localize";
 import {CardConfig, Template, TrendData, TrendResult} from './types';
 
 registerTemplates();
@@ -47,7 +47,7 @@ export class TrendAnalysisCard extends LitElement {
     public setConfig(config: CardConfig): void {
         this._config = config;
         this._activePreset = this._config.preset || DEFAULT_PRESET;
-        setLanguage(this._config.language);
+        Localize.initialize(this._hass, this._config.language);
     }
 
     // noinspection JSUnusedGlobalSymbols
@@ -57,7 +57,7 @@ export class TrendAnalysisCard extends LitElement {
 
     firstUpdated() {
         this._selectPreset(this._config.preset || DEFAULT_PRESET);
-        setLanguage(this._config.language);
+        Localize.initialize(this._hass, this._config.language);
     }
 
     async fetchHistory(start: string, end: string): Promise<TrendData[]> {
