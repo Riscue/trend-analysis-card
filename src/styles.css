@@ -355,7 +355,7 @@
 .preset-btn {
     flex: 1;
     min-width: 80px;
-    padding: 10px 16px;
+    padding: 10px 10px;
     border-radius: 10px;
     border: 1px solid var(--trend-border-color);
     font-size: 13px;
