@@ -223,7 +223,17 @@ export class TrendAnalysisCard extends LitElement {
                 const stateValue = parseFloat(state.state);
                 return !isNaN(stateValue) && state.state !== 'unknown' && state.state !== 'unavailable';
             })
-            .sort();
+            .sort((a, b) => {
+                const stateA = this._hass.states[a];
+                const stateB = this._hass.states[b];
+
+                // Use friendly_name if available, otherwise fall back to entity ID
+                const nameA = stateA?.attributes?.friendly_name?.trim() || a;
+                const nameB = stateB?.attributes?.friendly_name?.trim() || b;
+
+                // Case-insensitive comparison using locale-aware sorting
+                return nameA.localeCompare(nameB, undefined, { sensitivity: 'base' });
+            });
     }
 
     private renderHeader(): Template {
