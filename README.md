@@ -6,8 +6,9 @@
 
 [license-shield]: https://img.shields.io/github/license/Riscue/trend-analysis-card.svg?style=for-the-badge
 
-[![GitHub Release](https://img.shields.io/github/release/Riscue/trend-analysis-card.svg?style=for-the-badge)](https://github.com/Riscue/trend-analysis-card/releases)
 [![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/Riscue/trend-analysis-card/latest/total?label=downloads&style=for-the-badge)](https://github.com/Riscue/trend-analysis-card/releases)
+
+[![GitHub Release](https://img.shields.io/github/release/Riscue/trend-analysis-card.svg?style=for-the-badge)](https://github.com/Riscue/trend-analysis-card/releases)
 [![GitHub Activity](https://img.shields.io/github/commit-activity/y/Riscue/trend-analysis-card.svg?style=for-the-badge)](https://github.com/Riscue/trend-analysis-card/commits/master)
 
 ## About
