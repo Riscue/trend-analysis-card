@@ -115,6 +115,12 @@ export class TrendAnalysisCard extends LitElement {
             }
             if (data.length != 0) {
                 const netChange = data[data.length - 1].v - data[0].v;
+                const firstValue = data[0].v;
+
+                const deltaPercent = firstValue !== 0 ? (netChange / firstValue) * 100 : (netChange !== 0 ? (netChange > 0 ? 100 : -100) : 0);
+                const increasePercent = increase !== 0 ? (increase / Math.abs(firstValue || 1)) * 100 : 0;
+                const decreasePercent = decrease !== 0 ? (decrease / Math.abs(firstValue || 1)) * 100 : 0;
+
                 this._result = {
                     start: data[0].t,
                     end: data[data.length - 1].t,
@@ -123,6 +129,9 @@ export class TrendAnalysisCard extends LitElement {
                     increase: increase,
                     decrease: decrease,
                     delta: netChange,
+                    deltaPercent: deltaPercent,
+                    increasePercent: increasePercent,
+                    decreasePercent: decreasePercent,
                     trend: netChange > 0 ? "up" : netChange < 0 ? "down" : "neutral",
                     graphData: this._prepareGraphData(data)
                 };
@@ -304,6 +313,8 @@ export class TrendAnalysisCard extends LitElement {
 
         const entityState = this._hass.states[this._config.entity];
         const unit = entityState?.attributes?.unit_of_measurement || '';
+        const showPercentage = this._config.showPercentage === true;
+        const percentageOnly = this._config.percentageOnly === true;
 
         const data = this._result;
         const increasePercent = (data.increase / (data.increase + data.decrease)) * 100;
@@ -329,8 +340,13 @@ export class TrendAnalysisCard extends LitElement {
                     }
                 </div>
                 <div class="value-container">
-                    <span class="main-value ${data.trend}">${data.delta.toFixed(2)}</span>
-                    <span class="unit">${unit}</span>
+                    ${!percentageOnly ? html`
+                        <span class="main-value ${data.trend}">${data.delta.toFixed(2)}</span>
+                        <span class="unit">${unit}</span>
+                    ` : nothing}
+                    ${showPercentage ? html`
+                        <span class="percentage ${data.trend}">${data.deltaPercent !== undefined ? data.deltaPercent.toFixed(1) : '0.0'}%</span>
+                    ` : nothing}
                 </div>
             </div>
 
@@ -343,8 +359,13 @@ export class TrendAnalysisCard extends LitElement {
                         <span class="stat-label increase">${localize('common.total_increase')}</span>
                     </div>
                     <div class="stat-value-container">
-                        <span class="stat-value">${data.increase.toFixed(2)}</span>
-                        <span class="stat-unit">${unit}</span>
+                        ${!percentageOnly ? html`
+                            <span class="stat-value">${data.increase.toFixed(2)}</span>
+                            <span class="stat-unit">${unit}</span>
+                        ` : nothing}
+                        ${showPercentage ? html`
+                            <span class="stat-percentage">+${data.increasePercent !== undefined ? data.increasePercent.toFixed(1) : '0.0'}%</span>
+                        ` : nothing}
                     </div>
                     <div class="progress-bar">
                         <div class="progress-fill increase" style="width: calc(${increasePercent.toFixed(0)}%)"></div>
@@ -359,8 +380,13 @@ export class TrendAnalysisCard extends LitElement {
                         <span class="stat-label decrease">${localize('common.total_decrease')}</span>
                     </div>
                     <div class="stat-value-container">
-                        <span class="stat-value">${data.decrease.toFixed(2)}</span>
-                        <span class="stat-unit">${unit}</span>
+                        ${!percentageOnly ? html`
+                            <span class="stat-value">${data.decrease.toFixed(2)}</span>
+                            <span class="stat-unit">${unit}</span>
+                        ` : nothing}
+                        ${showPercentage ? html`
+                            <span class="stat-percentage">-${data.decreasePercent !== undefined ? data.decreasePercent.toFixed(1) : '0.0'}%</span>
+                        ` : nothing}
                     </div>
                     <div class="progress-bar">
                         <div class="progress-fill decrease" style="width: calc(${decreasePercent.toFixed(0)}%)"></div>

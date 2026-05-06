@@ -221,6 +221,24 @@
     font-weight: 500;
 }
 
+.percentage {
+    font-size: 28px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.percentage.up {
+    color: var(--trend-increase-light);
+}
+
+.percentage.down {
+    color: var(--trend-decrease-light);
+}
+
+.percentage.neutral {
+    color: var(--trend-neutral);
+}
+
 .stats-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -322,6 +340,20 @@
 .stat-unit {
     font-size: 14px;
     color: var(--trend-text-primary);
+}
+
+.stat-percentage {
+    font-size: 20px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.stat-card.increase .stat-percentage {
+    color: var(--trend-increase-light);
+}
+
+.stat-card.decrease .stat-percentage {
+    color: var(--trend-decrease-light);
 }
 
 .progress-bar {
@@ -649,6 +681,14 @@
 
     .stat-value {
         font-size: 24px;
+    }
+
+    .percentage {
+        font-size: 28px;
+    }
+
+    .stat-percentage {
+        font-size: 16px;
     }
 
     .preset-buttons {
